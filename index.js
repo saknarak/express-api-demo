@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const knex = require('knex')
+const faceid = require('./lib/faceid')
 
 const config = require('./config')
 
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 
 app.use('/api', express.json(), require('./api'))
 
-app.listen(config.server.port, () => {
+app.listen(config.server.port, async () => {
   console.log('ready', config.server.port)
+  await faceid.loadModel('./weights')
 })

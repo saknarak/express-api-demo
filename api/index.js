@@ -7,4 +7,4 @@ const router = express.Router()
 module.exports = router
 
 router.use('/auth', require('./auth'))
-router.use('/faceid', jwtCheck, require('./faceid'))
+router.use('/faceid', require('./faceid'))
